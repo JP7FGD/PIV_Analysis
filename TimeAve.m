@@ -8,21 +8,21 @@ close all; clear MeanImage;
 
 
 %Set parameters
-X_Pixels = 768;
-Y_Pixels = 768;
-Number_Image = 20000; %Total # of image per file
+X_Pixels = 120;
+Y_Pixels = 120;
+Number_Image = 2000; %Total # of image per file
 Pixels = X_Pixels*Y_Pixels; % # of total pixels/image
-BatchSize = 200; % # of image to process @one time determine based on memory size
+BatchSize = 2000; % # of image to process @one time determine based on memory size
 N = [X_Pixels Y_Pixels BatchSize]; % structure of input data
 BatchCount = Number_Image/BatchSize; % number of division per file
-Number_File = 9; % # of file to analyze
-cut_Y = 100:650;
-cut_X = 100:600;
+Number_File = 10; % # of file to analyze
+cut_Y = 100:650;% recalculate
+cut_X = 100:600;%
 
 %prepare output matrix
 Part_MeanImage = zeros(size(cut_Y,2),size(cut_X,2),BatchCount); % change based on the cut
 MeanImage = zeros(size(cut_Y,2),size(cut_X,2),Number_File);
-Max_Image = zeros(1,Number_File);
+Max_Image = zeros(1,Number_File); % need some thinking
 
 % input file
 file = 'I:/ch0618/ch_%02u_cor.dat'; 
