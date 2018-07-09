@@ -9,20 +9,22 @@ nf = 2000;
 
 %% load U
 
-file = 'G:/PIV_OUT/still/o-08u_1.dat';
-U =permute(loaddat(file,0,nx*ny*nf), [2 1 3]);
+file = 'I:/PIV_OUT/still/o-08u_1.dat';
+U = reshape(loaddat(file,0,nx*ny*nf), [ny nx nf]);
+U = permute(U, [2 1 3]);
 
 
 %% load V
 
-file='G:/PIV_OUT/still/o-08v_1.dat';
-V = permute(loaddat(file,0,nx*ny*nf), [2 1 3]);
+file='I:/PIV_OUT/still/o-08v_1.dat';
+V = reshape(loaddat(file,0,nx*ny*nf), [ny nx nf]);
+V = permute(V, [2 1 3]);
 
 %% visualize
-
+%colormap jet
 % one comp
 
-imagesc(fliplr(V(:,:,1000)))
-
+%imagesc(fliplr(V(1:105,:,2000)))
+imagesc(fliplr(V(50:105,1:100,2000)))
 %two comp
 

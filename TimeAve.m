@@ -16,19 +16,19 @@ BatchSize = 2000; % # of image to process @one time determine based on memory si
 N = [X_Pixels Y_Pixels BatchSize]; % structure of input data
 BatchCount = Number_Image/BatchSize; % number of division per file
 Number_File = 10; % # of file to analyze
-cut_Y = 100:650;% recalculate
-cut_X = 100:600;%
+cut_X = 1:100;% recalculate
+cut_Y = 50:105;%
 
 %prepare output matrix
 Part_MeanImage = zeros(size(cut_Y,2),size(cut_X,2),BatchCount); % change based on the cut
 MeanImage = zeros(size(cut_Y,2),size(cut_X,2),Number_File);
-Max_Image = zeros(1,Number_File); % need some thinking
+%Max_Image = zeros(1,Number_File); % need some thinking
 
 % input file
-file = 'I:/ch0618/ch_%02u_cor.dat'; 
+file = 'I:/PIV_OUT/still/o-08v_%01u.dat'; 
 
 for n=1:Number_File  %temp make another loop with 
-    filename = sprintf(file,n+9);
+    filename = sprintf(file,n);
 %main loop consider to use function hundle and clear the memory
     for j = 1:BatchCount
 
@@ -39,16 +39,18 @@ for n=1:Number_File  %temp make another loop with
 
     end
     MeanImage(:,:,n) = mean(Part_MeanImage,3); 
-    Max_Image(1,n) = max(max(MeanImage(:,:,n)));
+    %Max_Image(1,n) = max(max(MeanImage(:,:,n)));
 end
+Mean_Velocity = mean(MeanImage,3);
+
 %finish up
-FileName = ['I:\ch0618\output\chem_mean_2.mat']; % output file name
-save(FileName,'MeanImage'); 
+FileName = ['I:\PIV_OUT\still\mean\PIV_still_meanv_120.mat']; % output file name
+save(FileName,'Mean_Velocity'); 
 
 %normalization
-[Max_Value, I] = max(Max_Image); % find the index
-Nor_mean = MeanImage/Max_Value; 
-FileName = ['I:\ch0618\output\chem_nor_mean_2.mat']; % output file name
-save(FileName,'Nor_mean'); 
+%[Max_Value, I] = max(Max_Image); % find the index
+%Nor_mean = MeanImage/Max_Value; 
+%FileName = ['I:\ch0618\output\chem_nor_mean_2.mat']; % output file name
+%save(FileName,'Nor_mean'); 
 
 
