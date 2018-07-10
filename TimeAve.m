@@ -12,7 +12,7 @@ X_Pixels = 120;
 Y_Pixels = 120;
 Number_Image = 2000; %Total # of image per file
 Pixels = X_Pixels*Y_Pixels; % # of total pixels/image
-BatchSize = 1; % # of image to process @one time determine based on memory size
+BatchSize = 2000; % # of image to process @one time determine based on memory size
 N = [X_Pixels Y_Pixels BatchSize]; % structure of input data
 BatchCount = Number_Image/BatchSize; % number of division per file
 Number_File = 1; % # of file to analyze
@@ -26,13 +26,12 @@ MeanImage = zeros(size(cut_Y,2),size(cut_X,2),Number_File);
 Max_Velocity = zeros(1,2000);
 
 % input file
-file = 'I:/PIV_OUT/still/o-01v_%01u.dat'; 
+file = 'I:/PIV_OUT/still/o-08v_%01u.dat'; 
 
 for n=1:Number_File  %temp make another loop with 
     filename = sprintf(file,n);
 %main loop consider to use function hundle and clear the memory
     for j = 1:BatchCount
-
         Image = reshape(loaddat(filename,(j-1)*BatchSize*Pixels*8,Pixels*BatchSize),[Y_Pixels,X_Pixels,BatchSize]); %load the image
         RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1 3]); %permute
         %RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1]); %permute
@@ -49,7 +48,7 @@ end
 Mean_Velocity = mean(MeanImage,3);
 
 %finish up
-FileName = ['I:\PIV_OUT\still\mean\full\PIV_still_meanv_50_t3.mat']; % output file name
+FileName = ['I:\PIV_OUT\still\mean\full\PIV_still_meanv_120.mat']; % output file name
 save(FileName,'Mean_Velocity'); 
 
 %normalization
