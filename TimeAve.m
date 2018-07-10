@@ -33,19 +33,18 @@ for n=1:Number_File  %temp make another loop with
 %main loop consider to use function hundle and clear the memory
     for j = 1:BatchCount
 
-        Image = reshape(loaddat(filename,(j-1)*BatchSize*Pixels*2,Pixels*BatchSize),[Y_Pixels,X_Pixels,BatchSize]); %load the image
-        %RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1 3]); %permute
-        RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1]); %permute
+        Image = reshape(loaddat(filename,(j-1)*BatchSize*Pixels*8,Pixels*BatchSize),[Y_Pixels,X_Pixels,BatchSize]); %load the image
+        RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1 3]); %permute
+        %RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1]); %permute
         %CutImage = RawImage (cut_Y(1,:),cut_X(1,:),:); % cut the image if needed better combine with upper line
-        %Part_MeanImage(:,:,j) = mean(RawImage,3); %obtain a partial mean image
-        
-        Part_MeanImage(:,:,j) = RawImage;
-        Max_Velocity(1,j) = max(max(Image));
+        Part_MeanImage(:,:,j) = mean(RawImage,3); %obtain a partial mean image
+        %Part_MeanImage(:,:,j) = RawImage;
+       % Max_Velocity(1,j) = max(max(Image));
         %Max_Velocity(1,j) = max(max(Part_MeanImage(:,:,j)));
     end
     MeanImage(:,:,n) = mean(Part_MeanImage,3); 
     %Max_Image(1,n) = max(max(MeanImage(:,:,n)));
-    [M, I] = max(Max_Velocity);
+    %[M, I] = max(Max_Velocity);
 end
 Mean_Velocity = mean(MeanImage,3);
 

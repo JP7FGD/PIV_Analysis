@@ -27,7 +27,7 @@ s=1; % ID for store
 for l=1:10 % Each loop will proccess 2000 images 
     filename = sprintf(file,l);
     for n=1:2000
-        Image = reshape(loaddat(filename,(l-1)*BatchSize*Pixels*2,Pixels*BatchSize),[Y_Pixels,X_Pixels,BatchSize]);
+        Image = reshape(loaddat(filename,(n-1)*BatchSize*Pixels*8,Pixels*BatchSize),[Y_Pixels,X_Pixels,BatchSize]);
         RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1 3]);
         if max(max(RawImage)) < 10
             CutImage(:,:,s) = RawImage;
@@ -37,7 +37,11 @@ for l=1:10 % Each loop will proccess 2000 images
     
 end
 
-FileName = ['I:/PIV_OUT/still/PIV_still_v_50.mat']; % output file name
+FileName = ['I:/PIV_OUT/still/PIV_still_v_50_3.mat']; % output file name 
 save(FileName,'CutImage');  
+Mean_Velocity = mean(CutImage,3);
+FileName = ['I:\PIV_OUT\still\mean\full\PIV_still_meanv_50_t4.mat']; % output file name
+save(FileName,'Mean_Velocity'); 
+
 %finish up
 clear Image;

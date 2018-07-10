@@ -24,7 +24,7 @@ V = permute(V, [2 1 3]);
 %colormap jet
 % one comp
 
-%imagesc(fliplr(V(1:105,:,1186)))
+%imagesc(fliplr(V(1:105,:,2)))
 %imagesc(fliplr(V(50:105,10:100,2000)))
 %imagesc(fliplr(Mean_Velocity(:,:)))
 %two comp
