@@ -10,7 +10,7 @@ nf = 2000;
 %% load U
 
 %from .dat
-file = 'I:/PIV_OUT/still/o-08u_1.dat';
+file = 'I:/PIV_OUT/PIV200/o-18u_1.dat';
 U = reshape(loaddat(file,0,nx*ny*nf), [ny nx nf]);
 U = permute(U, [2 1 3]);
 
@@ -20,7 +20,7 @@ U = load(filename);
 
 %% load V
 
-file='I:/PIV_OUT/still/o-01v_1.dat';
+file='I:/PIV_OUT/still/o-08v_1.dat';
 V = reshape(loaddat(file,0,nx*ny*nf), [ny nx nf]);
 V = permute(V, [2 1 3]);
 
@@ -32,7 +32,7 @@ load(filename);
 % colormap jet
 % one comp
 
-%imagesc(fliplr(V(1:105,:,2)))
+%imagesc(fliplr(V(85:105,20:95,2000)))
 %imagesc(fliplr(V(50:105,10:100,2000)))
 x = [-3 27];
 y = [27 0];
