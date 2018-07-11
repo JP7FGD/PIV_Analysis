@@ -20,13 +20,13 @@ cut_X = 20:95;% recalculate
 cut_Y = 85:105;%
 
 %prepare output matrix
-Part_Mean = zeros(1,BatchCount); % change based on the cut
-MeanImage = zeros(size(cut_Y,2),size(cut_X,2),Number_File);
+Part_Mean = zeros(1,Number_Image); % change based on the cut
+MeanVelocity = zeros(1,Number_Image*Number_File);
 %Max_Image = zeros(1,Number_File); % need some thinking
 %Max_Velocity = zeros(1,2000);
 
 % input file
-file = 'I:/PIV_OUT/still/o-08v_%01u.dat'; 
+file = 'I:/PIV_OUT/still/o-02v_%01u.dat'; 
 
 for n=1:Number_File  %temp make another loop with 
     filename = sprintf(file,n);
@@ -34,15 +34,15 @@ for n=1:Number_File  %temp make another loop with
     for j = 1:BatchCount
         Image = reshape(loaddat(filename,(j-1)*BatchSize*Pixels*8,Pixels*BatchSize),[Y_Pixels,X_Pixels,BatchSize]); %load the image
         RawImage = permute(Image(cut_X(1,:),cut_Y(1,:),:),[2 1 3]); %permute
-        Part_Mean(1,j) = mean(mean(RawImage,1),2); %obtain a partial mean image
+        Part_Mean = mean(mean(RawImage,1),2); %obtain a partial mean image
        % Max_Velocity(1,j) = max(max(Image));
     end
-    MeanVelocity(:,:,2000*(n-1)+1:n*2000) = Part_Mean; 
+    MeanVelocity(1,2000*(n-1)+1:n*2000) = Part_Mean; 
     %Max_Image(1,n) = max(max(MeanImage(:,:,n)));
     %[M, I] = max(Max_Velocity);
 end
 %Mean_Velocity = mean(MeanImage,3);
 
 %finish up
-FileName = ['I:\PIV_OUT\still\mean\v\PIV_still_meanv_120.mat']; % output file name
-save(FileName,'Mean_Velocity'); 
+FileName = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_60.mat']; % output file name
+save(FileName,'MeanVelocity'); 
