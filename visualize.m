@@ -33,7 +33,7 @@ load(filename);
 % one comp
 
 %imagesc(fliplr(V(85:105,20:95,2000)))
-%imagesc(fliplr(V(50:105,10:100,2000)))
+%imagesc(fliplr(V(1:105,1:120,1400)))
 x = [-3 27];
 y = [27 0];
 imagesc(x, y, fliplr(Mean_Velocity(:,:)))

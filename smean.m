@@ -27,6 +27,9 @@ MeanVelocity = zeros(1,Number_Image*Number_File);
 
 % input file
 file = 'I:/PIV_OUT/still/o-02v_%01u.dat'; 
+% filename = ['I:\PIV_OUT\still\PIV_still_v_50_3.mat'];
+% load(filename);
+
 
 for n=1:Number_File  %temp make another loop with 
     filename = sprintf(file,n);
