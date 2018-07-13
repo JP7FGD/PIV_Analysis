@@ -16,8 +16,8 @@ BatchSize = 2000; % # of image to process @one time determine based on memory si
 N = [X_Pixels Y_Pixels BatchSize]; % structure of input data
 BatchCount = Number_Image/BatchSize; % number of division per file
 Number_File = 10; % # of file to analyze
-cut_X = 20:95;% recalculate
-cut_Y = 85:105;%
+cut_X = 32:112;% recalculate
+cut_Y = 75:105;%
 
 %prepare output matrix
 Part_Mean = zeros(1,Number_Image); % change based on the cut
@@ -26,7 +26,7 @@ MeanVelocity = zeros(1,Number_Image*Number_File);
 %Max_Velocity = zeros(1,2000);
 
 % input file
-file = 'I:/PIV_OUT/still/o-02v_%01u.dat'; 
+file = 'I:/PIV_OUT/still/o-08v_%01u.dat'; 
 % filename = ['I:\PIV_OUT\still\PIV_still_v_50_3.mat'];
 % load(filename);
 
@@ -47,5 +47,5 @@ end
 %Mean_Velocity = mean(MeanImage,3);
 
 %finish up
-FileName = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_60.mat']; % output file name
+FileName = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_120.mat']; % output file name
 save(FileName,'MeanVelocity'); 
