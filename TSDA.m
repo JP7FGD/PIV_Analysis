@@ -3,7 +3,7 @@
 
 %% load data
 
-filename = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_50.mat'];
+filename = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_120.mat'];
 load(filename);
 
 
@@ -38,24 +38,30 @@ nfft = 16384;
 
  scrsz=get(groot,'ScreenSize');
  figure('Position', [1 scrsz(2)/3 scrsz(3)/2 scrsz(4)/2]);
-plot(TimeLine,filtered_VD,'-k');
+%plot(TimeLine,filtered_VD,'-k');
 %plot(TimeLine,filtered_VD,'-', 'color', [1 0.5 0]);
 %plot(TimeLine,filtered_VD,'-', 'color', [0.6 0.6 0.5]);
 %plot(TimeLine,filtered_VD,'-', 'color', [0.3 0.6 0.7]);
-daspect([2.5 1 8])
-%loglog(ff,pxxf,'-r')
+%daspect([2.5 1 8])
+%loglog(ff,pxxf,'-c')
+% loglog(ff,pxxf,'-', 'color',  [1 0.5 0])
+% loglog(ff,pxxf,'-', 'color',  [0.6 0.6 0.5])  
+ loglog(ff,pxxf,'-', 'color', [0.3 0.6 0.7])
 ax = gca;
-    %ax.XLim = [30 300];
-    ax.YLim = [-0.36 -0.08];
-     ax.XTickMode = 'manual';
-     ax.YTickMode = 'manual';
-     xtickformat('%.2f')
-     ytickformat('%.2f')
-     ax.XTick = 0:0.2:1;
-     ax.YTick = -0.4:0.05:0;
+    ax.XLim = [30 300];
+    ax.YLim = [10^-10 10^-2];
+    %ax.YLim = [-0.36 -0.08];
+     %ax.XTickMode = 'manual';
+     %ax.YTickMode = 'manual';
+     %xtickformat('%.2f')
+     %ytickformat('%.2f')
+     %ax.XTick = 0:0.2:1;
+     %ax.YTick = -0.4:0.05:0;
     ax.FontSize = 24;
     ax.FontName =  'Times New Roman';
     ax.TitleFontSizeMultiplier = 2;
-    xlabel('\it \fontname{Times New Roman}t \rm[sec]');
-    ylabel('\it \fontname{Times New Roman}velocity  \rm[m/s]');
-    legend('120Hz','Location','SouthEast');
+    xlabel('\it \fontname{Times New Roman}Frequency \rm[Hz]');
+    ylabel('\it \fontname{Times New Roman}Power  \rm');
+%     xlabel('\it \fontname{Times New Roman}t \rm[sec]');
+%     ylabel('\it \fontname{Times New Roman}velocity  \rm[m/s]');
+%    legend('120Hz','Location','SouthEast');
