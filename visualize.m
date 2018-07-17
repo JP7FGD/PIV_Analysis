@@ -20,7 +20,7 @@ U = load(filename);
 
 %% load V
 
-file='I:/PIV_OUT/still/o-08v_1.dat';
+file='G:/PIV_OUT/still/o-06v_1.dat';
 V = reshape(loaddat(file,0,nx*ny*nf), [ny nx nf]);
 V = permute(V, [2 1 3]);
 
@@ -33,7 +33,7 @@ load(filename);
 % one comp
 
 %imagesc(fliplr(V(85:105,20:95,2000)))
-%imagesc(fliplr(V(1:105,1:120,1400)))
+%imagesc(fliplr(V(12:105,12:108,1600)))
 x = [0 24];
 y = [24 0];
 imagesc(x, y, fliplr(Mean_Velocity(12:105,12:108)))
