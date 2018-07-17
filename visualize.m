@@ -25,7 +25,7 @@ V = reshape(loaddat(file,0,nx*ny*nf), [ny nx nf]);
 V = permute(V, [2 1 3]);
 
 % from .mat
-filename = ['G:\PIV_OUT\still\mean\full/PIV_still_meanv_50.mat'];
+filename = ['I:\PIV_OUT\still\mean\v/full\PIV_still_meanv_50.mat'];
 load(filename);
 
 %% visualize
@@ -34,13 +34,15 @@ load(filename);
 
 %imagesc(fliplr(V(85:105,20:95,2000)))
 %imagesc(fliplr(V(1:105,1:120,1400)))
-x = [-3 27];
-y = [27 0];
-imagesc(x, y, fliplr(Mean_Velocity(:,:)))
+x = [0 24];
+y = [24 0];
+imagesc(x, y, fliplr(Mean_Velocity(12:105,12:108)))
+daspect([1 1 1])
 %imagesc(x, y, slicedata, [0 intensity]);
     
     %axis equal;
     caxis([-1 0.3]);
+    colorbar ('TickLabels', {'-1.0', '-0.5', '0.0', });
     %c = colorbar('eastoutside', 'Ticks', (0: intensity/4: intensity));
     %c.Label.String = 'Intensity';
     ax = gca;
@@ -55,8 +57,8 @@ imagesc(x, y, fliplr(Mean_Velocity(:,:)))
     %ax.YLim = [-Ly/2 Ly/2];
     ax.XTickMode = 'manual';
     ax.YTickMode = 'manual';
-    ax.XTick = -3:6:27;
-    ax.YTick = 0:6:27;
+    ax.XTick = 0:6:24;
+    ax.YTick = 0:6:24;
     ax.TickDir = 'in';
     %    ax.TickLength = [0.02 0.035];
     %ax.XMinorTick = 'on';
