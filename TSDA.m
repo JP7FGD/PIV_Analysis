@@ -3,7 +3,7 @@
 
 %% load data
 
-filename = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_120.mat'];
+filename = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_120_test.mat'];
 load(filename);
 
 

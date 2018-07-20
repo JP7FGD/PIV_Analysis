@@ -25,7 +25,7 @@ V = reshape(loaddat(file,0,nx*ny*nf), [ny nx nf]);
 V = permute(V, [2 1 3]);
 
 % from .mat
-filename = ['I:\PIV_OUT\still\mean\v/full\PIV_still_meanv_50.mat'];
+filename = ['G:\PIV_OUT\still\mean\v/full\PIV_still_meanv_120.mat'];
 load(filename);
 
 %% visualize
@@ -42,7 +42,8 @@ daspect([1 1 1])
     
     %axis equal;
     caxis([-1 0.3]);
-    colorbar ('TickLabels', {'-1.0', '-0.5', '0.0', });
+    colormap jet;
+    %colorbar ('TickLabels', {'-1.0', '-0.5', '0.0', });
     %c = colorbar('eastoutside', 'Ticks', (0: intensity/4: intensity));
     %c.Label.String = 'Intensity';
     ax = gca;
