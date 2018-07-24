@@ -26,9 +26,9 @@ MeanVelocity = zeros(1,Number_Image*Number_File);
 %Max_Velocity = zeros(1,2000);
 
 % input file
-file = 'G:/PIV_OUT/still/o-08v_%01u.dat'; 
-% filename = ['G:\PIV_OUT\still\PIV_still_v_50_3.mat'];
-% load(filename);
+%file = 'G:/PIV_OUT/still/o-01v_%01u.dat'; 
+ filename = ['G:\PIV_OUT\still\PIV_still_v_50_3.mat'];
+ load(filename);
 
 
 for n=1:Number_File  %temp make another loop with 
@@ -47,6 +47,14 @@ for n=1:Number_File  %temp make another loop with
 end
 %Mean_Velocity = mean(MeanImage,3);
 
+for j = 1:19947
+        RawImage = permute(CutImage(cut_Y(1,:),cut_X(1,:),j),[2 1 3]); %permute
+        %Part_Mean = mean(mean(RawImage,1),2); %obtain a partial mean image
+        Part_Mean(1,j) = mean(RawImage(RawImage < 1));
+       % Max_Velocity(1,j) = max(max(Image));
+end
+ MeanVelocity = Part_Mean; 
+
 %finish up
-FileName = ['G:\PIV_OUT\still\mean\s\PIV_still_smeanv_120_test.mat']; % output file name
+FileName = ['G:\PIV_OUT\still\mean\s\PIV_still_smeanv_50.mat']; % output file name
 save(FileName,'MeanVelocity'); 

@@ -3,7 +3,7 @@
 
 %% load data
 
-filename = ['I:\PIV_OUT\still\mean\s\PIV_still_smeanv_120_test.mat'];
+filename = ['G:\PIV_OUT\still\mean\s\PIV_still_smeanv_120.mat'];
 load(filename);
 
 
@@ -43,13 +43,14 @@ nfft = 16384;
 %plot(TimeLine,filtered_VD,'-', 'color', [0.6 0.6 0.5]);
 %plot(TimeLine,filtered_VD,'-', 'color', [0.3 0.6 0.7]);
 %daspect([2.5 1 8])
-%loglog(ff,pxxf,'-c')
+loglog(ff,pxxf,'-k')
 % loglog(ff,pxxf,'-', 'color',  [1 0.5 0])
 % loglog(ff,pxxf,'-', 'color',  [0.6 0.6 0.5])  
- loglog(ff,pxxf,'-', 'color', [0.3 0.6 0.7])
+% loglog(ff,pxxf,'-', 'color', [0.3 0.6 0.7])
+pbaspect([1.62 1 1])
 ax = gca;
-    ax.XLim = [30 300];
-    ax.YLim = [10^-10 10^-2];
+    ax.XLim = [40 140];
+    ax.YLim = [10^-10 10^-3];
     %ax.YLim = [-0.36 -0.08];
      %ax.XTickMode = 'manual';
      %ax.YTickMode = 'manual';
@@ -60,8 +61,8 @@ ax = gca;
     ax.FontSize = 24;
     ax.FontName =  'Times New Roman';
     ax.TitleFontSizeMultiplier = 2;
-    xlabel('\it \fontname{Times New Roman}Frequency \rm[Hz]');
-    ylabel('\it \fontname{Times New Roman}Power  \rm');
+    xlabel('\it \fontname{Times New Roman}f \rm[Hz]');
+    ylabel('\it \fontname{Times New Roman}p  \rm');
 %     xlabel('\it \fontname{Times New Roman}t \rm[sec]');
 %     ylabel('\it \fontname{Times New Roman}velocity  \rm[m/s]');
 %    legend('120Hz','Location','SouthEast');
